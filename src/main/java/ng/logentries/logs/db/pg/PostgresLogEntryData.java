@@ -52,7 +52,4 @@ public class PostgresLogEntryData extends LogEntryData {
         return "app heroku-postgres";
     }
 
-    public static void main(String[] args) {
-        System.out.println(Long.parseLong("14575610528 bytes".replaceAll("\\D", "")));
-    }
 }

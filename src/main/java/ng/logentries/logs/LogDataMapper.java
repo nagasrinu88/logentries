@@ -93,11 +93,4 @@ public class LogDataMapper {
         } while (cls != null && !dataMap.isEmpty());
         //System.out.println(dataMap);
     }
-
-    public static void main(String[] args) throws Exception {
-        String log = "576 <134>1 2015-08-25T00:06:06+00:00 app heroku-postgres - - source=DATABASE sample#current_transaction=3658931 sample#db_size=14575610528bytes sample#tables=105 sample#active-connections=15 sample#waiting-connections=0 sample#index-cache-hit-rate=0.98208 sample#table-cache-hit-rate=0.75704 sample#load-avg-1m=11.93 sample#load-avg-5m=12.325 sample#load-avg-15m=12.035 sample#read-iops=111.8 sample#write-iops=398.39 sample#memory-total=15405664kB sample#memory-free=155700kB sample#memory-cached=14091352kB sample#memory-postgres=543092kB";
-        PostgresLogEntryData data = parse(log, PostgresLogEntryData.class);
-        System.out.println(data);
-    }
-
 }

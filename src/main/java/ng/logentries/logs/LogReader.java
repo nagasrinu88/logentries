@@ -8,7 +8,6 @@ package ng.logentries.logs;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import ng.logentries.logs.db.pg.PostgresLogEntryData;
 import ng.logentries.util.Account;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
