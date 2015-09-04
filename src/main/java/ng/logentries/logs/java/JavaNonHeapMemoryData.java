@@ -12,20 +12,20 @@ import ng.logentries.util.AttributeKey;
  *
  * @author NavNag
  */
-public class JavaHeapMemoryData extends LogEntryData {
+public class JavaNonHeapMemoryData extends LogEntryData {
 
     @AttributeKey(name = "4")
     private String dyno;
-    @AttributeKey(name = "measure.mem.jvm.heap.used")
+    @AttributeKey(name = "measure.mem.jvm.nonheap.used")
     private int used;
-    @AttributeKey(name = "measure.mem.jvm.heap.committed")
+    @AttributeKey(name = "measure.mem.jvm.nonheap.committed")
     private int committed;
-    @AttributeKey(name = "measure.mem.jvm.heap.max")
+    @AttributeKey(name = "measure.mem.jvm.nonheap.max")
     private int max;
 
     @Override
     public String getPattern() {
-        return "measure.mem.jvm.heap";
+        return "measure.mem.jvm.nonheap";
     }
 
     @Override
