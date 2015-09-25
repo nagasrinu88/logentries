@@ -7,7 +7,6 @@ package ng.logentries.logs;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
-import ng.logentries.logs.db.pg.PostgresLogEntryData;
 import ng.logentries.util.AttributeKey;
 
 /**

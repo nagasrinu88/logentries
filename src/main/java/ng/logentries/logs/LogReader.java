@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import ng.logentries.util.Account;
+import ng.logentries.util.FilterOptions;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -32,6 +33,10 @@ public class LogReader {
     }
 
     public <T extends LogEntryData> List<T> readLogs(Class<? extends LogEntryData> cls, Account account, int limit) throws Exception {
+        return readLogs(cls, account, new FilterOptions(limit));
+    }
+
+    public <T extends LogEntryData> List<T> readLogs(Class<? extends LogEntryData> cls, Account account, FilterOptions options) throws Exception {
         List<T> list = new ArrayList<>();
         LogEntryData instance = cls.newInstance();
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -40,8 +45,15 @@ public class LogReader {
                     setScheme("https").
                     setHost("pull.logentries.com/").
                     setPath(account.getAccessKey() + "/hosts/" + account.getLogSetName() + "/" + account.getLogName() + "/");
-            uriBuilder.addParameter("limit", "" + limit);
+            uriBuilder.addParameter("limit", "" + options.getLimit());
             uriBuilder.addParameter("filter", instance.getPattern());
+            if (options.getsTime() != -1) {
+                uriBuilder.addParameter("start", "" + options.getsTime());
+            }
+            if (options.geteTime() != -1) {
+                uriBuilder.addParameter("end", "" + options.geteTime());
+                System.out.println(options.geteTime());
+            }
             HttpGet get = new HttpGet(uriBuilder.build());
             HttpResponse httpResponse = httpClient.execute(get);
             HttpEntity entity = httpResponse.getEntity();

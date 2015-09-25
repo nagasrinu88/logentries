@@ -41,6 +41,12 @@ public class PostgresLogEntryData extends LogEntryData {
     private long cachedMemory;
     @AttributeKey(name = "sample#memory-postgres")
     private long postgresMemory;
+    @AttributeKey(name = "sample#load-avg-1m")
+    private float avgLoad1M;
+    @AttributeKey(name = "sample#load-avg-5m")
+    private float avgLoad5M;
+    @AttributeKey(name = "sample#load-avg-15m")
+    private float avgLoad15M;
 
     @Override
     public String toString() {
