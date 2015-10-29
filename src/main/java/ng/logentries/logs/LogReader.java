@@ -45,7 +45,9 @@ public class LogReader {
                     setScheme("https").
                     setHost("pull.logentries.com/").
                     setPath(account.getAccessKey() + "/hosts/" + account.getLogSetName() + "/" + account.getLogName() + "/");
-            uriBuilder.addParameter("limit", "" + options.getLimit());
+            if (options.getLimit() != -1) {
+                uriBuilder.addParameter("limit", "" + options.getLimit());
+            }
             uriBuilder.addParameter("filter", instance.getPattern());
             if (options.getsTime() != -1) {
                 uriBuilder.addParameter("start", "" + options.getsTime());
